@@ -7,9 +7,7 @@ function PostCard({ post, isProfile, removeLike, addLike, user }) {
   // We need to know if the logged in user has liked this particular post!
   // we search the array of objects that is post.likes to see if the logged in users
   // id exists in that array of objects
-  const likeIndex = post.likes.findIndex(
-    (like) => like.userId === user._id
-  );
+  const likeIndex = post.likes.findIndex((like) => like.userId === user._id);
 
   const clickHandler =
     likeIndex > -1

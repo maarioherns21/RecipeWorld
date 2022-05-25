@@ -3,58 +3,62 @@ import styledComponents from "styled-components";
 import { useParams } from "react-router-dom";
 import PageHeader from "../../components/Header/Header";
 
-export default function Recipe () {
+export default function Recipe() {
+  let params = useParams();
+  const [details, setDetails] = useState({});
+  const [activeTab, setActiveTab] = useState("instructions");
 
-    let params = useParams();
-    const [details, setDetails] = useState({});
-    const [activeTab, setActiveTab] = useState("instructions");
-
-
-
-
-    const fetchDetails = async () => {
-        const data = await fetch(
-        `https://api.spoonacular.com/recipes/${params.id}/information?apiKey=${process.env.REACT_APP_API_KEY}`
+  const fetchDetails = async () => {
+    const data = await fetch(
+      `https://api.spoonacular.com/recipes/${params.id}/information?apiKey=${process.env.REACT_APP_API_KEY}`
     );
     const detailData = await data.json();
     setDetails(detailData);
+  };
+  useEffect(() => {
+    fetchDetails();
+  }, [params.name]);
 
-}
-    useEffect(() => {
-        fetchDetails();
-    },[params.name]);
-
-
-    return (
+  return (
+    <div>
+      <PageHeader />
+      <DetailWrapper>
         <div>
-            <PageHeader />
-        <DetailWrapper>
-           <div>
-               <h3>{details.title}</h3>
-               <img src={details.image} alt=""/>
-           </div>
-           <Info>
-               <Button className={activeTab === "instructions" ? 'active' : ' '} onClick={()=> setActiveTab('instructions')}>Instructions</Button>
-               <Button className={activeTab === "ingridients" ? 'active' : ' '} onClick={()=> setActiveTab('ingridients')}>Ingridients</Button>
-               {activeTab === "instructions" && (
-                   <div>
-                   <h3 dangerouslySetInnerHTML={{ __html: details.summary}}></h3>
-                   <h3 dangerouslySetInnerHTML={{__html: details.instructions}}></h3>
-               </div>
-               )}
-               {activeTab === "ingridients" && (
-                
-                <ul>
-                    {details.extendedIngredients.map((ingredient) => 
-                   <li key={ingredient.id}>{ingredient.original}</li>)}
-                </ul>
-
-               )}
-              
-           </Info>
-        </DetailWrapper>
+          <h3>{details.title}</h3>
+          <img src={details.image} alt="" />
         </div>
-    )
+        <Info>
+          <Button
+            className={activeTab === "instructions" ? "active" : " "}
+            onClick={() => setActiveTab("instructions")}
+          >
+            Instructions
+          </Button>
+          <Button
+            className={activeTab === "ingridients" ? "active" : " "}
+            onClick={() => setActiveTab("ingridients")}
+          >
+            Ingridients
+          </Button>
+          {activeTab === "instructions" && (
+            <div>
+              <h3 dangerouslySetInnerHTML={{ __html: details.summary }}></h3>
+              <h3
+                dangerouslySetInnerHTML={{ __html: details.instructions }}
+              ></h3>
+            </div>
+          )}
+          {activeTab === "ingridients" && (
+            <ul>
+              {details.extendedIngredients.map((ingredient) => (
+                <li key={ingredient.id}>{ingredient.original}</li>
+              ))}
+            </ul>
+          )}
+        </Info>
+      </DetailWrapper>
+    </div>
+  );
 }
 const DetailWrapper = styledComponents.div`
     margin-top: 10rem;
@@ -76,8 +80,8 @@ const DetailWrapper = styledComponents.div`
     ul{
         margin-top: 2rem;
     }
-`
-const Button = styledComponents.button `
+`;
+const Button = styledComponents.button`
  padding: 1rem 2rem;
  color: #313131;
  background: white;
@@ -85,8 +89,8 @@ const Button = styledComponents.button `
  margin-right: 2rem;
  font-weight: 600;
 
-`
+`;
 
-const Info = styledComponents.div `
+const Info = styledComponents.div`
     margin-left: 10rem
-`
+`;

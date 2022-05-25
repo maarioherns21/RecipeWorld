@@ -45,11 +45,7 @@ export default function LoginPage(props) {
 
   return (
     <>
-      <Grid
-        style={{ padding: 100}}
-        textAlign="center"
-        verticalAlign="middle"
-      >
+      <Grid style={{ padding: 100 }} textAlign="center" verticalAlign="middle">
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h1" color="blue" textAlign="center">
             <h1> Log-in to your account</h1>
@@ -92,4 +88,3 @@ export default function LoginPage(props) {
     </>
   );
 }
-
