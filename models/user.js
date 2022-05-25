@@ -57,14 +57,3 @@ userSchema.methods.comparePassword = function(tryPassword, cb) {
 };
 
 module.exports = mongoose.model('User', userSchema);
-userSchema.methods.comparePassword = function (tryPassword, cb) {
-  console.log(cb, " this is cb");
-  // 'this' represents the document that you called comparePassword on
-  bcrypt.compare(tryPassword, this.password, function (err, isMatch) {
-    if (err) return cb(err);
-
-    cb(null, isMatch);
-  });
-};
-
-module.exports = mongoose.model("User", userSchema);

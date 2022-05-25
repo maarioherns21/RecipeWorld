@@ -1,33 +1,33 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import { Link } from "react-router-dom";
-import "./Popular.css";
+import "./Veggie.css";
 import { Image } from "semantic-ui-react";
 
-export default function Popular() {
- const [Popular, setPopular] = useState([]);
+export default function Veggie() {
+ const [Veggie, setVeggie] = useState([]);
 
     useEffect(() => {
-        getPopular();
+        getVeggie();
     },[]);
 
 
 ///this safe in the local storage 
-const getPopular = async () => {
-  const check = localStorage.getItem('popular');
+const getVeggie = async () => {
+  const check = localStorage.getItem('veggie');
 
 if(check){
-    setPopular(JSON.parse(check))
+    setVeggie(JSON.parse(check))
 } else { /// else it fetch from the API
     const api = await fetch (
-        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
+        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9&tags=vegetarian`
         )
         const data = await api.json()
 
-        localStorage.setItem('popular', JSON.stringify(data.recipes))
-        setPopular(data.recipes)
+        localStorage.setItem('veggie', JSON.stringify(data.recipes))
+        setVeggie(data.recipes)
         console.log(data.recipes)
 }
         
@@ -36,23 +36,23 @@ if(check){
     return ( 
           <div>
                 <Wrapper>
-                    <h1>Popular Dishes</h1>
+                    <h1>Vegetarian Dishes</h1>
                   <Splide options={{
-                      perPage: 4,
+                      perPage: 3,
                       arrows: false,
                       paginations: false,
                       drag: 'free',
                       gap: '5rem'
                   }}>
-                     {Popular.map((recipe) => {
+                     {Veggie.map((recipe) => {
                          return(
                              <SplideSlide key={recipe.id}>
-                             <Card className="Card1">
-                                 <Link to={'/recipe/' + recipe.id}>
+                             <Card className="Card">
+                              <Link to={'/recipe/' + recipe.id}>
                                  <p>
                                     {recipe.title}
                                  </p>
-                                 <img  src={recipe.image} alt={recipe.title} />
+                                 <img src={recipe.image} alt={recipe.title} />
                                  <Gradient />
                                  </Link>
                              </Card>
@@ -66,7 +66,7 @@ if(check){
 }
 
 const Wrapper = styled.div `
-margin: 1rem 0rem;`;
+margin: 4rem 0rem;`;
 
 const Card = styled.div `
 min-height: 20rem;

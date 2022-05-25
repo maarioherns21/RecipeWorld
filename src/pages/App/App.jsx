@@ -4,7 +4,11 @@ import "./App.css";
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
 import userService from "../../utils/userService";
-
+import Home from "../Home/Home";
+import Cousine from "../Cousine/Cousine";
+import Searched from "../Searched/Searched";
+import Recipe from "../Recipe/Recipe";
+import ProfilePage from "../ProfilePage/ProfilePage";
 function App() {
   const [user, setUser] = useState(userService.getUser()); // getUser decodes our JWT token, into a javascript object
   // this object corresponds to the jwt payload which is defined in the server signup or login function that looks like
@@ -22,7 +26,10 @@ function App() {
   if (user) {
     return (
       <Routes>
-        <Route path="/" element={<h1>This is Home Page!</h1>} />
+        <Route
+          path="/"
+          element={<Home user={user} handleLogout={handleLogout} />}
+        />
         <Route
           path="/login"
           element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}
@@ -31,6 +38,15 @@ function App() {
           path="/signup"
           element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />}
         />
+        <Route
+          path="/:username"
+          element={<ProfilePage user={user} handleLogout={handleLogout} />}
+        />
+        <Route path="/cuisine/:type" element={<Cousine />} />
+
+        <Route path="/searched/:search" element={<Searched />} />
+
+        <Route path="/recipe/:id" element={<Recipe />} />
       </Routes>
     );
   }
