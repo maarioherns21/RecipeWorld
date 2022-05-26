@@ -2,9 +2,6 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import {
   Grid,
-  GridRow,
-  Image,
-  CardDescription,
   Icon,
   CardContent,
 } from "semantic-ui-react";
@@ -41,7 +38,7 @@ export default function Searched() {
               </Link>
 
               <CardContent extra textAlign={"right"}>
-                <Icon name={"heart"} size="large" />
+                <Icon name={"heart"} size="large" color="grey" />
               </CardContent>
             </Card>
           );

@@ -40,8 +40,9 @@ export default function Cousine() {
              <Icon className="icon" name={"heart"} size="large" />
             </Link>
             <CardContent extra textAlign={"right"}>
-                <Icon name={"heart"} size="large" />
+                <Icon name={"heart"} size="large" color="grey" />
               </CardContent>
+              <Wrapper/>
           </Card>
         );
       })}
