@@ -4,10 +4,9 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import "./Category.css";
 
-
 export default function Category() {
   return (
-    <List >
+    <List>
       <SLink to={"/cuisine/Italian"}>
         <FaPizzaSlice />
         <h4>Italian</h4>

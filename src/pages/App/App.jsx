@@ -50,7 +50,10 @@ function App() {
 
         <Route path="/recipe/:id" element={<Recipe />} />
 
-        <Route path="/new" element={<Pages user={user} handleLogout={handleLogout} />} />
+        <Route
+          path="/new"
+          element={<Pages user={user} handleLogout={handleLogout} />}
+        />
       </Routes>
     );
   }

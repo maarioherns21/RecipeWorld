@@ -10,7 +10,7 @@ import {
   CardContent,
 } from "semantic-ui-react";
 import PageHeader from "../../components/Header/Header";
-import './Searched.css'
+import "./Searched.css";
 
 export default function Searched() {
   const [SearchedRecipes, setSearchRecipes] = useState([]);

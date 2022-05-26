@@ -106,7 +106,7 @@ export default function Home({ user, handleLogout }) {
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-    > 
+    >
       <PageHeader handleLogout={handleLogout} user={user} />
       <Navbar />
       <HeroSection />
