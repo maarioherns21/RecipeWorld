@@ -9,6 +9,8 @@ import Cousine from "../Cousine/Cousine";
 import Searched from "../Searched/Searched";
 import Recipe from "../Recipe/Recipe";
 import ProfilePage from "../ProfilePage/ProfilePage";
+import Pages from "../Pages";
+import Navbar from "../../components/Navbar/Navbar";
 function App() {
   const [user, setUser] = useState(userService.getUser()); // getUser decodes our JWT token, into a javascript object
   // this object corresponds to the jwt payload which is defined in the server signup or login function that looks like
@@ -47,6 +49,8 @@ function App() {
         <Route path="/searched/:search" element={<Searched />} />
 
         <Route path="/recipe/:id" element={<Recipe />} />
+
+        <Route path="/new" element={<Pages user={user} handleLogout={handleLogout} />} />
       </Routes>
     );
   }

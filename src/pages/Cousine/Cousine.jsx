@@ -1,7 +1,13 @@
 import styled from "styled-components";
-import { motion } from "framer-motion";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import PageHeader from "../../components/Header/Header";
+import "./Cousine.css";
+import {
+  Grid,
+  Icon,
+} from "semantic-ui-react";
+
 
 export default function Cousine() {
   const [cuisine, setCuisine] = useState([]);
@@ -21,37 +27,53 @@ export default function Cousine() {
   }, [params.type]);
 
   return (
+    <div>
+      <PageHeader />
     <Grid>
       {cuisine.map((item) => {
         return (
-          <Card key={item.id}>
+          <Card className="Card" key={item.id}>
             <Link to={"/recipe/" + item.id}>
               <img src={item.image} alt="" />
-              <h4>{item.title}</h4>
+               <p>{item.title}</p>
+             <Icon  name={"heart"} size="large" />
             </Link>
           </Card>
         );
       })}
     </Grid>
+    </div>
   );
 }
 
-const Grid = styled(motion.div)`
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr))
-grid-gap: 3rem;
-`;
+const Wrapper = styled.div `
+margin: 1rem 0rem;`;
 
-const Card = styled.div`
-  img {
-    width: 100%;
-    border-radius: 2rem;
-  }
-  a {
-    text-decoration: none;
-  }
-  h4 {
-    text-align: center;
-    padding: 1rem;
-  }
+const Card = styled.div `
+min-height: 20rem;
+overflow: hidden;
+position: relative;
+
+img{
+   position: absolute;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+ p {
+     position: absolute;
+     z-index: 10;
+     left: 50;
+     bottom: 0%;
+     color: white;
+     width: 100%;
+     text-align: center;
+     font-weight:  600;
+     font-size: 1rem;
+     height: 40%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
 `;

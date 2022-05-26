@@ -1,17 +1,16 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import styled from "styled-components";
 import {
   Grid,
   GridRow,
   Card,
   Image,
-  GridColumn,
   CardDescription,
   Icon,
   CardContent,
 } from "semantic-ui-react";
 import PageHeader from "../../components/Header/Header";
+import './Searched.css'
 
 export default function Searched() {
   const [SearchedRecipes, setSearchRecipes] = useState([]);
@@ -44,7 +43,7 @@ export default function Searched() {
                   </Link>
                 </Card.Content>
                 <CardContent extra textAlign={"right"}>
-                  <Icon name={"heart"} size="large" />
+                  <Icon className="icon" name={"heart"} size="large" />
                 </CardContent>
               </Card>
             );

@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 import Search from "../../components/Search/Search";
 import Category from "../../components/Category/Category";
 import PageHeader from "../../components/Header/Header";
-
+import HeroSection from "../../components/HeroSection/HeroSection";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../components/Loader/Loader";
 import * as postsAPI from "../../utils/postApi";
 import * as likesAPI from "../../utils/likeApi";
-
+import Navbar from "../../components/Navbar/Navbar";
 import { Grid } from "semantic-ui-react";
 
 export default function Home({ user, handleLogout }) {
@@ -106,9 +106,10 @@ export default function Home({ user, handleLogout }) {
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-    >
+    > 
       <PageHeader handleLogout={handleLogout} user={user} />
-      <Search />
+      <Navbar />
+      <HeroSection />
       <Category />
       <Veggie />
       <Popular />
