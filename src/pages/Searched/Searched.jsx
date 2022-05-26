@@ -3,7 +3,6 @@ import { useParams, Link } from "react-router-dom";
 import {
   Grid,
   GridRow,
-  Card,
   Image,
   CardDescription,
   Icon,
@@ -11,6 +10,7 @@ import {
 } from "semantic-ui-react";
 import PageHeader from "../../components/Header/Header";
 import "./Searched.css";
+import styled from "styled-components";
 
 export default function Searched() {
   const [SearchedRecipes, setSearchRecipes] = useState([]);
@@ -32,24 +32,55 @@ export default function Searched() {
     <div>
       <PageHeader />
       <Grid>
-        <GridRow>
-          {SearchedRecipes.map((item) => {
-            return (
-              <Card key={item.id} raised>
-                <Card.Content>
-                  <Link to={"/recipe/" + item.id}>
-                    <Image src={item.image} alt="" />
-                    <CardDescription>{item.title}</CardDescription>
-                  </Link>
-                </Card.Content>
-                <CardContent extra textAlign={"right"}>
-                  <Icon className="icon" name={"heart"} size="large" />
-                </CardContent>
-              </Card>
-            );
-          })}
-        </GridRow>
+        {SearchedRecipes.map((item) => {
+          return (
+            <Card className="Card" key={item.id}>
+              <Link to={"/recipe/" + item.id}>
+                <img src={item.image} alt="" />
+                <p>{item.title}</p>
+              </Link>
+
+              <CardContent extra textAlign={"right"}>
+                <Icon name={"heart"} size="large" />
+              </CardContent>
+            </Card>
+          );
+        })}
       </Grid>
+      <Wrapper />
     </div>
   );
 }
+
+const Wrapper = styled.div`
+  margin: 1rem 0rem;
+`;
+
+const Card = styled.div`
+  min-height: 20rem;
+  overflow: hidden;
+  position: relative;
+
+  img {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  p {
+    position: absolute;
+    z-index: 10;
+    left: 50;
+    bottom: 0%;
+    color: white;
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;

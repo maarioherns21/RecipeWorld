@@ -12,6 +12,7 @@ import * as postsAPI from "../../utils/postApi";
 import * as likesAPI from "../../utils/likeApi";
 import Navbar from "../../components/Navbar/Navbar";
 import { Grid } from "semantic-ui-react";
+import Footer from "../../components/Footer/Footer";
 
 export default function Home({ user, handleLogout }) {
   console.log(postsAPI, " <-- postsAPI");
@@ -113,6 +114,8 @@ export default function Home({ user, handleLogout }) {
       <Category />
       <Veggie />
       <Popular />
+      <Footer />
+
     </motion.div>
   );
 }
