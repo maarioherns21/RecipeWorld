@@ -3,7 +3,7 @@ import styledComponents from "styled-components";
 import { useParams } from "react-router-dom";
 import PageHeader from "../../components/Header/Header";
 
-export default function Recipe() {
+export default function Recipe({handleLogout, user}) {
   let params = useParams();
   const [details, setDetails] = useState({});
   const [activeTab, setActiveTab] = useState("instructions");
@@ -21,10 +21,10 @@ export default function Recipe() {
 
   return (
     <div>
-      <PageHeader />
+      <PageHeader handleLogout={handleLogout} user={user}/>
       <DetailWrapper>
         <div>
-          <h3>{details.title}</h3>
+          <h2>{details.title}</h2>
           <img src={details.image} alt="" />
         </div>
         <Info>
@@ -69,7 +69,8 @@ const DetailWrapper = styledComponents.div`
         color: white;
     }
     h2{
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
+        margin-left: 5rem;
 
     }
     li {
@@ -80,6 +81,14 @@ const DetailWrapper = styledComponents.div`
     ul{
         margin-top: 2rem;
     }
+    h3{
+      font-size: 1.2rem;
+      line-height: 2rem;
+      font-weight: 200;
+    }
+    img {
+      margin-left: 5rem;
+    }
 `;
 const Button = styledComponents.button`
  padding: 1rem 2rem;
@@ -88,9 +97,12 @@ const Button = styledComponents.button`
  border: 2px solid black;
  margin-right: 2rem;
  font-weight: 600;
+ margin-bottom: 3rem;
 
 `;
 
 const Info = styledComponents.div`
-    margin-left: 10rem
+    margin-left: 10rem;
+    margin-right: 5rem;
+  
 `;
