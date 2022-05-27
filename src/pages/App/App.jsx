@@ -9,6 +9,7 @@ import Cousine from "../Cousine/Cousine";
 import Searched from "../Searched/Searched";
 import Recipe from "../Recipe/Recipe";
 import ProfilePage from "../ProfilePage/ProfilePage";
+import Feed from "../Pages";
 
 function App() {
   const [user, setUser] = useState(userService.getUser()); // getUser decodes our JWT token, into a javascript object
@@ -51,7 +52,7 @@ function App() {
 
         <Route
           path="/new"
-          element={<Pages user={user} handleLogout={handleLogout} />}
+          element={<Feed user={user} handleLogout={handleLogout} />}
         />
       </Routes>
     );
