@@ -23,8 +23,8 @@ Note that in this app, a user can "like" a recipe by clickin it.
 
 #### Recipes
 
-|HTTP<br>Method|URL<br>Endpoint|Controller<br>Action|Purpose|
-|---|---|---|---|
+|HTTP<br>Method|URL<br>Endpoint|
+|---|---|
 | /signup | signup page |
 | /login | login page |
 | /profilepage | profile page |
