@@ -40,13 +40,12 @@ function PostCard({ post, isProfile, removeLike, addLike, user }) {
               {post.user.username}
             </Link>
           </Card.Header>
+          <h2>{post.caption}</h2>
         </Card.Content>
       )}
 
       <Image src={`${post.photoUrl}`} wrapped ui={false} />
-      <Card.Content>
-        <Card.Description>{post.caption}</Card.Description>
-      </Card.Content>
+      <Card.Content><h5>Ingredients</h5><h8>{post.ingridients}</h8><h5>Instructions</h5><h8>{post.instructions}</h8></Card.Content>
       <Card.Content extra textAlign={"right"}>
         <Icon
           name={"heart"}

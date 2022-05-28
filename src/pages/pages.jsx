@@ -7,8 +7,12 @@ import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
 import Loading from "../components/Loader/Loader";
 import * as postsAPI from "../utils/postApi";
 import * as likesAPI from "../utils/likeApi";
-
+import "./pages.css";
 import { Grid } from "semantic-ui-react";
+import HeroSection from "../components/HeroSection/HeroSection";
+import Navbar from "../components/Navbar/Navbar";
+import Popular from "../components/Popular/Popular";
+import Footer from "../components/Footer/Footer";
 
 export default function Feed({ user, handleLogout }) {
   console.log(postsAPI, " <-- postsAPI");
@@ -98,19 +102,16 @@ export default function Feed({ user, handleLogout }) {
   }
 
   return (
+    <div>
+     
+      <PageHeader handleLogout={handleLogout} user={user} />
+      <Navbar />
+   
+      <div ><h1 >Share Your Fav Recipe!</h1></div>
+      <AddPostForm handleAddPost={handleAddPost} />
     <Grid centered>
       <Grid.Row>
-        <Grid.Column>
-          <PageHeader handleLogout={handleLogout} user={user} />
-        </Grid.Column>
-      </Grid.Row>
-      <Grid.Row>
-        <Grid.Column style={{ maxWidth: 450 }}>
-          <AddPostForm handleAddPost={handleAddPost} />
-        </Grid.Column>
-      </Grid.Row>
-      <Grid.Row>
-        <Grid.Column style={{ maxWidth: 450 }}>
+        <Grid.Column style={{ maxWidth: 350 }}>
           <PostGallery
             posts={posts}
             numPhotosCol={1}
@@ -123,5 +124,8 @@ export default function Feed({ user, handleLogout }) {
         </Grid.Column>
       </Grid.Row>
     </Grid>
+    <Popular />
+    <Footer />
+    </div>
   );
 }

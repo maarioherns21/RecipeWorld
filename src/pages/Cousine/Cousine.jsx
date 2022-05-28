@@ -6,8 +6,11 @@ import "./Cousine.css";
 import {
   Grid,
   Icon,
-  CardContent
+  CardContent,
+  Button
 } from "semantic-ui-react";
+import Popular from "../../components/Popular/Popular";
+import Footer from "../../components/Footer/Footer";
 
 
 export default function Cousine() {
@@ -21,23 +24,25 @@ export default function Cousine() {
     const recipes = await data.json();
     setCuisine(recipes.results);
   };
-
+  const [data,setData] =useState([]);
   useEffect(() => {
     getCousine(params.type);
     console.log(params.type);
   }, [params.type]);
 
+   
+  
+
   return (
     <div>
       <PageHeader />
-    <Grid>
+    <Grid centered>
       {cuisine.map((item) => {
         return (
           <Card className="Card" key={item.id}>
             <Link to={"/recipe/" + item.id}>
               <img src={item.image} alt="" />
                <p>{item.title}</p>
-             <Icon className="icon" name={"heart"} size="large" />
             </Link>
             <CardContent extra textAlign={"right"}>
                 <Icon name={"heart"} size="large" color="grey" />
@@ -47,6 +52,8 @@ export default function Cousine() {
         );
       })}
     </Grid>
+    <Popular />
+    <Footer />
     </div>
   );
 }

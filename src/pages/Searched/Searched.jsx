@@ -8,6 +8,8 @@ import {
 import PageHeader from "../../components/Header/Header";
 import "./Searched.css";
 import styled from "styled-components";
+import Popular from "../../components/Popular/Popular";
+import Footer from "../../components/Footer/Footer";
 
 export default function Searched() {
   const [SearchedRecipes, setSearchRecipes] = useState([]);
@@ -28,7 +30,7 @@ export default function Searched() {
   return (
     <div>
       <PageHeader />
-      <Grid>
+      <Grid centered>
         {SearchedRecipes.map((item) => {
           return (
             <Card className="Card" key={item.id}>
@@ -45,6 +47,8 @@ export default function Searched() {
         })}
       </Grid>
       <Wrapper />
+      <Popular />
+      <Footer />
     </div>
   );
 }

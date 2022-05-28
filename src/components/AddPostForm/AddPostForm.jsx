@@ -2,10 +2,12 @@ import React, { useState } from "react";
 
 import { Button, Form, Grid, Segment } from "semantic-ui-react";
 
-export default function AddPuppyForm(props) {
+export default function AddForm(props) {
   const [selectedFile, setSelectedFile] = useState("");
   const [state, setState] = useState({
     caption: "",
+    ingridients: "",
+    instructions: "",
   });
 
   function handleFileInput(e) {
@@ -24,6 +26,8 @@ export default function AddPuppyForm(props) {
 
     const formData = new FormData();
     formData.append("photo", selectedFile);
+    formData.append("ingridients" , state.ingridients);
+    formData.append("instructions", state.instructions);
     formData.append("caption", state.caption);
     props.handleAddPost(formData);
 
@@ -31,7 +35,7 @@ export default function AddPuppyForm(props) {
   }
 
   return (
-    <Grid textAlign="center" style={{ height: "25vh" }} verticalAlign="middle">
+    <Grid textAlign="center" style={{ height: "35vh" }} verticalAlign="left">
       <Grid.Column style={{ maxWidth: 450 }}>
         <Segment>
           <Form autoComplete="off" onSubmit={handleSubmit}>
@@ -40,6 +44,22 @@ export default function AddPuppyForm(props) {
               name="caption"
               value={state.caption}
               placeholder="Whats your favs recipe?"
+              onChange={handleChange}
+              required
+            />
+            <Form.Input
+              className="form-control"
+              name="ingridients"
+              value={state.ingridients}
+              placeholder="ingridients"
+              onChange={handleChange}
+              required
+            />
+             <Form.Input
+              className="form-control"
+              name="instructions"
+              value={state.instructions}
+              placeholder="instructions"
               onChange={handleChange}
               required
             />

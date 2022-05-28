@@ -22,6 +22,8 @@ function create(req, res) {
       console.log(err, " from aws");
       const post = await Post.create({
         caption: req.body.caption,
+        ingridients: req.body.ingridients,
+        instructions: req.body.instructions,
         user: req.user,
         photoUrl: data.Location,
       });

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import styledComponents from "styled-components";
 import { useParams } from "react-router-dom";
 import PageHeader from "../../components/Header/Header";
+import Popular from "../../components/Popular/Popular";
+import Footer from "../../components/Footer/Footer";
 
 export default function Recipe({handleLogout, user}) {
   let params = useParams();
@@ -19,6 +21,26 @@ export default function Recipe({handleLogout, user}) {
     fetchDetails();
   }, [params.name]);
 
+  async function deleteRecipe(){
+    const data = fetch(
+      `https://api.spoonacular.com/recipes/${params.id}/information?apiKey=${process.env.REACT_APP_API_KEY}`,{
+         method: 'DELETE'
+       });
+        data = await data.json();
+       console.warn(deleteRecipe)
+   }
+ 
+  //  async function getData (id) {
+ 
+  //    let recipes = fetch(
+  //      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${id}`
+  //      );
+  //      recipes = await recipes.json();
+  //      setData(recipes)
+ 
+  //  }
+   
+
   return (
     <div>
       <PageHeader handleLogout={handleLogout} user={user}/>
@@ -28,7 +50,7 @@ export default function Recipe({handleLogout, user}) {
           <img src={details.image} alt="" />
         </div>
         <Info>
-          <Button
+          <Button //turnary expression switch between the instructions and ingridients
             className={activeTab === "instructions" ? "active" : " "}
             onClick={() => setActiveTab("instructions")}
           >
@@ -40,6 +62,7 @@ export default function Recipe({handleLogout, user}) {
           >
             Ingridients
           </Button>
+          <Button  onClick={()=> deleteRecipe(params.id)} >Delete</Button>
           {activeTab === "instructions" && (
             <div>
               <h3 dangerouslySetInnerHTML={{ __html: details.summary }}></h3>
@@ -57,6 +80,8 @@ export default function Recipe({handleLogout, user}) {
           )}
         </Info>
       </DetailWrapper>
+      <Popular />
+      <Footer />
     </div>
   );
 }

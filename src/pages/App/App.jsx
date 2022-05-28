@@ -9,6 +9,7 @@ import Cousine from "../Cousine/Cousine";
 import Searched from "../Searched/Searched";
 import Recipe from "../Recipe/Recipe";
 import ProfilePage from "../ProfilePage/ProfilePage";
+import Feed from "../Pages";
 
 
 function App() {
@@ -50,7 +51,10 @@ function App() {
 
         <Route path="/recipe/:id" element={<Recipe />} />
 
-        
+        <Route
+          path="/recipe/share"
+          element={<Feed user={user} handleLogout={handleLogout} />}
+        />
       </Routes>
     );
   }
