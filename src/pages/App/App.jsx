@@ -9,7 +9,7 @@ import Cousine from "../Cousine/Cousine";
 import Searched from "../Searched/Searched";
 import Recipe from "../Recipe/Recipe";
 import ProfilePage from "../ProfilePage/ProfilePage";
-import Feed from "../Pages";
+import Feed from "../SharePage/SharePage";
 
 
 function App() {

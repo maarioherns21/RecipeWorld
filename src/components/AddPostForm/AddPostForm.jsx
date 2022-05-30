@@ -35,7 +35,7 @@ export default function AddForm(props) {
   }
 
   return (
-    <Grid textAlign="center" style={{ height: "35vh" }} verticalAlign="left">
+    <Grid textAlign="center" style={{ height: "40vh" }} verticalAlign="left">
       <Grid.Column style={{ maxWidth: 450 }}>
         <Segment>
           <Form autoComplete="off" onSubmit={handleSubmit}>
