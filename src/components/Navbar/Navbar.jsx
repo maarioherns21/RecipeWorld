@@ -43,7 +43,7 @@ function Navbar() {
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
-                Share You Fav Recipe
+              Share Your Fav Recipes
               </Link>
             </li>
             <li className="nav-item">

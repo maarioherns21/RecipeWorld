@@ -49,7 +49,7 @@ export default function AddForm(props) {
             />
             <Form.Input
               className="form-control"
-              name="ingridients"
+              name="Ingredients"
               value={state.ingridients}
               placeholder="ingridients"
               onChange={handleChange}
@@ -57,7 +57,7 @@ export default function AddForm(props) {
             />
             <Form.Input
               className="form-control"
-              name="instructions"
+              name="Instructions"
               value={state.instructions}
               placeholder="instructions"
               onChange={handleChange}
