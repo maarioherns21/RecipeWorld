@@ -10,12 +10,12 @@ export default function HeroSection() {
       <h1>Recipe World</h1>
       <p>What are you waiting for?</p>
       <Button
-          className="btns hero-btns"
-          buttonStyle="btn--outline"
-          buttonSize="btn--large"
-        >
-          GET STARTED
-        </Button>
+        className="btns hero-btns"
+        buttonStyle="btn--outline"
+        buttonSize="btn--large"
+      >
+        GET STARTED
+      </Button>
     </div>
   );
 }
