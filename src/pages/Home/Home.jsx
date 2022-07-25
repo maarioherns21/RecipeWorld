@@ -19,6 +19,8 @@ export default function Home({ user, handleLogout }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  
+
   // R read in crud
   async function getPosts() {
     try {
@@ -71,6 +73,7 @@ export default function Home({ user, handleLogout }) {
       <Veggie />
       <Popular />
       <Footer />
+
     </motion.div>
   );
 }

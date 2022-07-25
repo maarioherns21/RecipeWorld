@@ -101,32 +101,32 @@ export default function Feed({ user, handleLogout }) {
 
   return (
     <div>
+     
       <PageHeader handleLogout={handleLogout} user={user} />
       <Navbar />
-
-      <div>
-        <h1>Share Your Fav Recipe!</h1>
-      </div>
+   
+      <div ><h1 >Share Your Fav Recipe!</h1></div>
       <AddPostForm handleAddPost={handleAddPost} />
       <div className="scroll-container">
-        <Grid centered>
-          <Grid.Row>
-            <Grid.Column style={{ maxWidth: 350 }}>
-              <PostGallery
-                posts={posts}
-                numPhotosCol={1}
-                isProfile={false}
-                loading={loading}
-                addLike={addLike}
-                removeLike={removeLike}
-                user={user}
-              />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </div>
-      <Popular />
-      <Footer />
+        
+    <Grid centered>
+      <Grid.Row>
+        <Grid.Column style={{ maxWidth: 350 }}>
+          <PostGallery
+            posts={posts}
+            numPhotosCol={1}
+            isProfile={false}
+            loading={loading}
+            addLike={addLike}
+            removeLike={removeLike}
+            user={user}
+          />
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
+    </div>
+    <Popular />
+    <Footer />
     </div>
   );
 }

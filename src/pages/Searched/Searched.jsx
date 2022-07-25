@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Grid } from "semantic-ui-react";
+import {
+  Grid,
+  Icon,
+  CardContent,
+} from "semantic-ui-react";
 import PageHeader from "../../components/Header/Header";
 import "./Searched.css";
 import styled from "styled-components";
@@ -26,7 +30,6 @@ export default function Searched() {
   return (
     <div>
       <PageHeader />
-      <h1>{params.search} dishes</h1>
       <Grid centered>
         {SearchedRecipes.map((item) => {
           return (
@@ -35,6 +38,10 @@ export default function Searched() {
                 <img src={item.image} alt="" />
                 <p>{item.title}</p>
               </Link>
+
+              <CardContent extra textAlign={"right"}>
+                <Icon name={"heart"} size="large" color="grey" />
+              </CardContent>
             </Card>
           );
         })}

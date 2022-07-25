@@ -6,9 +6,9 @@ export default function PageHeader({ user, handleLogout }) {
   console.log(user, "user in header");
   return (
     <Segment clearing>
-      <Header as="h2" floated="right">
+      <Header  as="h2" floated="right">
         <Link to="/">
-          <Icon color="blue" name="home"></Icon>
+          <Icon  color="blue" name="home"></Icon>
         </Link>
         <Link to="" onClick={handleLogout}>
           Logout

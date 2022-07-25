@@ -26,7 +26,7 @@ export default function AddForm(props) {
 
     const formData = new FormData();
     formData.append("photo", selectedFile);
-    formData.append("ingridients", state.ingridients);
+    formData.append("ingridients" , state.ingridients);
     formData.append("instructions", state.instructions);
     formData.append("caption", state.caption);
     props.handleAddPost(formData);
@@ -53,7 +53,7 @@ export default function AddForm(props) {
               placeholder="ingridients"
               onChange={handleChange}
             />
-            <Form.Input
+             <Form.Input
               className="form-control"
               name="Instructions"
               value={state.instructions}

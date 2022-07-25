@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import Search from "../Search/Search";
 
-function Navbar() {
+function Navbar({ user, handleLogout }) {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -38,12 +38,17 @@ function Navbar() {
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
+<<<<<<< HEAD
               <Link
                 to="/recipe/share"
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
               Share Your Fav Recipes
+=======
+              <Link to="/recipe/share" className="nav-links" onClick={closeMobileMenu}>
+                Share You Fav Recipe
+>>>>>>> parent of a821610 (updated version)
               </Link>
             </li>
             <li className="nav-item">
