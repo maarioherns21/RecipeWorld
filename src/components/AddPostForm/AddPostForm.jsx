@@ -26,7 +26,7 @@ export default function AddForm(props) {
 
     const formData = new FormData();
     formData.append("photo", selectedFile);
-    formData.append("ingridients" , state.ingridients);
+    formData.append("ingridients", state.ingridients);
     formData.append("instructions", state.instructions);
     formData.append("caption", state.caption);
     props.handleAddPost(formData);
@@ -35,7 +35,7 @@ export default function AddForm(props) {
   }
 
   return (
-    <Grid textAlign="center" style={{ height: "55vh" }} verticalAlign="left">
+    <Grid textAlign="center" style={{ height: "40vh" }} verticalAlign="left">
       <Grid.Column style={{ maxWidth: 450 }}>
         <Segment>
           <Form autoComplete="off" onSubmit={handleSubmit}>
@@ -45,20 +45,23 @@ export default function AddForm(props) {
               value={state.caption}
               placeholder="Whats your favs recipe?"
               onChange={handleChange}
+              required
             />
             <Form.Input
               className="form-control"
-              name="Ingredients"
+              name="ingridients"
               value={state.ingridients}
               placeholder="ingridients"
               onChange={handleChange}
+              required
             />
-             <Form.Input
+            <Form.Input
               className="form-control"
-              name="Instructions"
+              name="instructions"
               value={state.instructions}
               placeholder="instructions"
               onChange={handleChange}
+              required
             />
             <Form.Input
               className="form-control"

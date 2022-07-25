@@ -4,8 +4,9 @@ import { useParams } from "react-router-dom";
 import PageHeader from "../../components/Header/Header";
 import Popular from "../../components/Popular/Popular";
 import Footer from "../../components/Footer/Footer";
+import { Icon } from "semantic-ui-react";
 
-export default function Recipe({handleLogout, user}) {
+export default function Recipe({ handleLogout, user }) {
   let params = useParams();
   const [details, setDetails] = useState({});
   const [activeTab, setActiveTab] = useState("instructions");
@@ -21,29 +22,29 @@ export default function Recipe({handleLogout, user}) {
     fetchDetails();
   }, [params.name]);
 
-  async function deleteRecipe(){
-    const data = fetch(
-      `https://api.spoonacular.com/recipes/${params.id}/information?apiKey=${process.env.REACT_APP_API_KEY}`,{
-         method: 'DELETE'
-       });
-        data = await data.json();
-       console.warn(deleteRecipe)
-   }
- 
+  // async function deleteRecipe(){
+  //   const data = fetch(
+  //     `https://api.spoonacular.com/recipes/${params.id}/information?apiKey=${process.env.REACT_APP_API_KEY}`,{
+  //        method: 'DELETE'
+  //      });
+  //       data = await data.json();
+  //      console.warn(deleteRecipe)
+  //  }
+
   //  async function getData (id) {
- 
+
   //    let recipes = fetch(
   //      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${id}`
   //      );
   //      recipes = await recipes.json();
   //      setData(recipes)
- 
+
   //  }
-   
+  const likeColor = -1 ? "blue" : "red";
 
   return (
     <div>
-      <PageHeader handleLogout={handleLogout} user={user}/>
+      <PageHeader handleLogout={handleLogout} user={user} />
       <DetailWrapper>
         <div>
           <h2>{details.title}</h2>
@@ -62,7 +63,10 @@ export default function Recipe({handleLogout, user}) {
           >
             Ingridients
           </Button>
-          <Button  onClick={()=> deleteRecipe(params.id)} >Delete</Button>
+          <Button>
+            <Icon name={"thumbs up"} size="small" color={likeColor} />
+            Like
+          </Button>
           {activeTab === "instructions" && (
             <div>
               <h3 dangerouslySetInnerHTML={{ __html: details.summary }}></h3>
