@@ -19,7 +19,7 @@ export default function Recipe({ handleLogout, user }) {
     setDetails(detailData);
   };
   useEffect(() => {
-    fetchDetails();
+    fetchDetails(params.name);
   }, [params.name]);
 
   // async function deleteRecipe(){

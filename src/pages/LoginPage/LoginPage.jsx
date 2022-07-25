@@ -44,10 +44,14 @@ export default function LoginPage(props) {
 
   return (
     <>
-      <Grid style={{ padding: 100 }} textAlign="center" verticalAlign="middle">
-        <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as="h1" color="blue" textAlign="center">
-            <h1> Log-in to your account</h1>
+      <Grid
+        textAlign="center"
+        verticalAlign="middle"
+        style={{ padding: 100 }}
+      >
+        <Grid.Column  style={{ maxWidth: 450 }}>
+          <Header as="h2" color="blue" textAlign="center">
+           Log-in to your account
           </Header>
           <Form autoComplete="off" onSubmit={handleSubmit}>
             <Segment stacked>

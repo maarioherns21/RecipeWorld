@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Grid } from "semantic-ui-react";
 import PageHeader from "../../components/Header/Header";
 import Loading from "../../components/Loader/Loader";
-import ProfileBio from "../../components/ProfileBio/ProfileBio"
+import ProfileBio from "../../components/ProfileBio/ProfileBio";
 import PostGallery from "../../components/PostGallery/PostGallery";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
@@ -115,3 +115,4 @@ export default function ProfilePage(props) {
     </Grid>
   );
 }
+
