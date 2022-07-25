@@ -45,7 +45,6 @@ export default function AddForm(props) {
               value={state.caption}
               placeholder="Whats your favs recipe?"
               onChange={handleChange}
-              required
             />
             <Form.Input
               className="form-control"
@@ -53,7 +52,6 @@ export default function AddForm(props) {
               value={state.ingridients}
               placeholder="ingridients"
               onChange={handleChange}
-              required
             />
             <Form.Input
               className="form-control"
@@ -61,7 +59,6 @@ export default function AddForm(props) {
               value={state.instructions}
               placeholder="instructions"
               onChange={handleChange}
-              required
             />
             <Form.Input
               className="form-control"
